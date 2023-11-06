@@ -19,7 +19,8 @@ fun energi-to-number(str :: String) -> Number:
     | some(a) => a
     | none => 0
   end
-# skriv koden her (tips: bruk cases og string-to-number funksjonen)
+  
+  # Funksjonen under gjør om verdiene i "energi" blokka fra String til Number. 
 where:
   energi-to-number("10") is 10
   energi-to-number("30") is 30
@@ -32,20 +33,22 @@ where:
   energi-to-number("4") is 4
 end
 
-#transform-column(t :: Table, colname :: String, f :: (A -> B)) -> Table
+
 transform-column(kWh-wealthy-consumer-data, "energi", energi-to-number)
 kWh-wealthy-consumer-data
 
 Tabellx = transform-column(kWh-wealthy-consumer-data, "energi", energi-to-number)
 
-#sum(t :: Table, colname :: String) -> Number
+
+#Funksjonen under summerer Tabellx sammen
 sum(Tabellx, "energi") 
 
-#bar-chart(t :: Table, ls :: String, vs :: String)
+
+#Funksjonen under gjør Tabellx om til et søylediagram
 bar-chart(Tabellx, "komponent", "energi")
 
 
- #energy-per-day = ( distance-travelled-per-day / distance-per-unit-of-fuel ) * energy-per-unit-of-fuel)
+#Funksjonen under regner ut energiforbruket for bilbruk til en typisk innbygger
 fun forbruk(x1, x2, x3) :
   energy-per-day = ( x1 / x2 ) * x3
   
